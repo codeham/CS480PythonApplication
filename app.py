@@ -1,7 +1,7 @@
 import re
 
 tempList = []
-# Patter Order: 
+# Pattern Order: 
 # Date, Time, Source IP, Destination IP, Source Port, Destination Port
 patterns = [r'^[A-Z][a-z]*\s\d*', r'[0-9][0-9]\b:\b[0-9][0-9]\b:\b[0-9][0-9]',
             r'\bSRC=\b[0-9]+(?:\.[0-9]+){3}', r'\bDST=\b[0-9]+(?:\.[0-9]+){3}',
