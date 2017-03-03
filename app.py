@@ -1,6 +1,5 @@
 import re
 
-date, time, srcIp, destIp, sourcePort, destPort = list(), list(), list(), list(), list(), list()
 tempList = []
 patterns = [r'^[A-Z][a-z]*\s\d*', r'\bDPT=\b[0-9]*\s', r'[0-9][0-9]\b:\b[0-9][0-9]\b:\b[0-9][0-9]',
             r'\bSRC=\b[0-9]+(?:\.[0-9]+){3}', r'\bSRC=\b[0-9]+(?:\.[0-9]+){3}', r'\bDST=\b[0-9]+(?:\.[0-9]+){3}',
