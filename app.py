@@ -1,8 +1,10 @@
 import re
 
 tempList = []
-patterns = [r'^[A-Z][a-z]*\s\d*', r'\bDPT=\b[0-9]*\s', r'[0-9][0-9]\b:\b[0-9][0-9]\b:\b[0-9][0-9]',
-            r'\bSRC=\b[0-9]+(?:\.[0-9]+){3}', r'\bSRC=\b[0-9]+(?:\.[0-9]+){3}', r'\bDST=\b[0-9]+(?:\.[0-9]+){3}',
+# Patter Order: 
+# Date, Time, Source IP, Destination IP, Source Port, Destination Port
+patterns = [r'^[A-Z][a-z]*\s\d*', r'[0-9][0-9]\b:\b[0-9][0-9]\b:\b[0-9][0-9]',
+            r'\bSRC=\b[0-9]+(?:\.[0-9]+){3}', r'\bDST=\b[0-9]+(?:\.[0-9]+){3}',
             r'\bSPT=\b[0-9]*\s', r'\bDPT=\b[0-9]*\s']
 pattern = "|".join(patterns)
 
@@ -20,5 +22,5 @@ for element in tempList:
 
 print ("--------------------------------------------------------------------------------------------")
 
-    # DDOS Give Aways
+# DDOS Give Aways
 # same IP -> Multiple Ports
