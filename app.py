@@ -6,6 +6,7 @@ tempList = []
 patterns = [r'^[A-Z][a-z]*\s\d*', r'[0-9][0-9]\b:\b[0-9][0-9]\b:\b[0-9][0-9]',
             r'\bSRC=\b[0-9]+(?:\.[0-9]+){3}', r'\bDST=\b[0-9]+(?:\.[0-9]+){3}',
             r'\bSPT=\b[0-9]*\s', r'\bDPT=\b[0-9]*\s']
+ # Joining(concatinating) full pattern with OR operator for better efficieny
 pattern = "|".join(patterns)
 
 counter = 0
