@@ -1,7 +1,7 @@
 import re
 import json
 
-tempList = []
+temp = []
 categorylist = ['date', 'time', 'sourceIP', 'destinationIP', 'sourcePort', 'destinationPort']
 # Pattern Order:
 # Date, Time, Source IP, Destination IP, Source Port, Destination Port
@@ -13,41 +13,42 @@ patterns = [r'^[A-Z][a-z]*\s\d*', r'[0-9][0-9]\b:\b[0-9][0-9]\b:\b[0-9][0-9]',
 pattern = "|".join(patterns)
 counter = 0
 
-def printList(tempList):
+def printList(temp):
     print ("--------------------------------------------------------------------------------------------")
     print ("Amount of parsed lines " + str(counter))
     print ("--------------------------------------------------------------------------------------------")
-    for element in tempList:
+    for element in temp:
         print element
     print ("--------------------------------------------------------------------------------------------")
 
-def listtojson(templist):
+def listtojson(temp):
     dict_items = {}
     index = 0
-    
+
     for item in categorylist:
-        dict_items[item] = tempList[index]
+        dict_items[item] = temp[index]
         index += 1
 
-    s = json.dumps(dict_items, indent = 2)
-    print s
-
-    dict_items.clear()
-
-def trimList(mylist):
+    json_string = json.dumps(dict_items, indent = 2)
+    print json_string
+    # dictionary -> json string
+    # index json string to elastic database
+def trimlist(mylist):
     index = 0
     while index < len(mylist):
         mylist[index] = re.sub(r'[A-Z]*=', "", mylist[index])
         index += 1
     return mylist
 
-with open("shortlog.txt") as fn:
+with open("log.txt") as fn:
     for line in fn.readlines():
-        tempList.extend(re.findall(pattern, line))
-        tempList = trimList(tempList)
-        listtojson(tempList)
-        del tempList[:]
+        temp.extend(re.findall(pattern, line))
+        temp = trimlist(temp)
+        listtojson(temp)
+        del temp[:]
         counter += 1
+
+# total lines parsed in file
 print "Total Count:" + str(counter)
 
 # DDOS Give Aways
