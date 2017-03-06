@@ -13,13 +13,13 @@ patterns = [r'^[A-Z][a-z]*\s\d*', r'[0-9][0-9]\b:\b[0-9][0-9]\b:\b[0-9][0-9]',
 pattern = "|".join(patterns)
 counter = 0
 
-def printList(temp):
-    print ("--------------------------------------------------------------------------------------------")
-    print ("Amount of parsed lines " + str(counter))
-    print ("--------------------------------------------------------------------------------------------")
-    for element in temp:
-        print element
-    print ("--------------------------------------------------------------------------------------------")
+# def printList(temp):
+#     print ("--------------------------------------------------------------------------------------------")
+#     print ("Amount of parsed lines " + str(counter))
+#     print ("--------------------------------------------------------------------------------------------")
+#     for element in temp:
+#         print element
+#     print ("--------------------------------------------------------------------------------------------")
 
 def listtojson(temp):
     dict_items = {}
@@ -41,7 +41,6 @@ def trimlist(mylist):
     return mylist
 
 with open("log.txt") as fn:
-    # temp = []
     for line in fn.readlines():
         temp = []
         temp.extend(re.findall(pattern, line))
@@ -50,7 +49,6 @@ with open("log.txt") as fn:
 
 # total lines parsed in file
 print "Total Count:" + str(counter)
-print appbackend.printtest()
-print appbackend.r.content
+print appbackend.getData()
 # DDOS Give Aways
 # same IP -> Multiple Ports
