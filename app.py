@@ -1,7 +1,7 @@
 import re
 import json
+import appbackend
 
-temp = []
 categorylist = ['date', 'time', 'sourceIP', 'destinationIP', 'sourcePort', 'destinationPort']
 # Pattern Order:
 # Date, Time, Source IP, Destination IP, Source Port, Destination Port
@@ -29,8 +29,8 @@ def listtojson(temp):
         dict_items[item] = temp[index]
         index += 1
 
-    json_string = json.dumps(dict_items, indent = 2)
-    print json_string
+    json_string = json.dumps(dict_items, indent=2)
+    appbackend.jsontodb(json_string)
     # dictionary -> json string
     # index json string to elastic database
 def trimlist(mylist):
@@ -41,15 +41,16 @@ def trimlist(mylist):
     return mylist
 
 with open("log.txt") as fn:
+    # temp = []
     for line in fn.readlines():
+        temp = []
         temp.extend(re.findall(pattern, line))
-        temp = trimlist(temp)
-        listtojson(temp)
-        del temp[:]
+        listtojson(trimlist(temp))
         counter += 1
 
 # total lines parsed in file
 print "Total Count:" + str(counter)
-
+print appbackend.printtest()
+print appbackend.r.content
 # DDOS Give Aways
 # same IP -> Multiple Ports
