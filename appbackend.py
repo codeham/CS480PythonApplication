@@ -25,3 +25,4 @@ def getData():
     # get test, this is just getting back a document from the db
     formatprint(es.get(index='elements', doc_type='logs', id=0))
     formatprint(es.get(index='elements', doc_type='logs', id=400))
+    formatprint(es.get(index='elements', doc_type='logs', id=20))

@@ -7,7 +7,7 @@ categorylist = ['date', 'time', 'sourceIP', 'destinationIP', 'sourcePort', 'dest
 # Date, Time, Source IP, Destination IP, Source Port, Destination Port
 patterns = [r'^[A-Z][a-z]*\s\d*', r'[0-9][0-9]\b:\b[0-9][0-9]\b:\b[0-9][0-9]',
             r'\bSRC=\b[0-9]+(?:\.[0-9]+){3}', r'\bDST=\b[0-9]+(?:\.[0-9]+){3}',
-            r'\bSPT=\b[0-9]*\s', r'\bDPT=\b[0-9]*\s']
+            r'\bSPT=\b[0-9]*', r'\bDPT=\b[0-9]*']
 
 # Joining(concatenating) full pattern with OR operator for better efficieny
 pattern = "|".join(patterns)
@@ -37,6 +37,7 @@ def trimlist(mylist):
     index = 0
     while index < len(mylist):
         mylist[index] = re.sub(r'[A-Z]*=', "", mylist[index])
+        mylist[index].rstrip
         index += 1
     return mylist
 
