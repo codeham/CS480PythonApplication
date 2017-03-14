@@ -48,7 +48,7 @@ def trimlist(mylist):
 
 # opens the log file specified in field
 # iterates line by line
-# during each iteration each line is parsed with a regex to extract wanted data
+# during each iteration each line is parsed with a regex to extract wanted data (thrown into temp list)
 # list is then passed in as an argument to trimlist(temp) to trim off any unwated string..
 # this returns a list data type containing formatted entries
 # trimlist(temp) is passed into listtojson(list data type), which communicates with the backend module..
