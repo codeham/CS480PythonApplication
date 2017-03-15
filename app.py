@@ -65,7 +65,7 @@ with open("log.txt") as fn:
         counter += 1
 
 # total lines parsed in file
-print "Total Count:" + str(counter)
+print ("Total Count:" + str(counter))
 appbackend.getData()
 # appbackend.defineMapping()
 # appbackend.search("destinationPort","23")

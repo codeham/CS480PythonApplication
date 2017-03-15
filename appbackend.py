@@ -11,7 +11,7 @@ r = requests.get('http://localhost:9200')
 
 # simeple function that prints json objects with clarity
 def formatprint(jsonobj):
-    print json.dumps(jsonobj, indent=2)
+    print (json.dumps(jsonobj, indent=2))
 
 # increment method returns global index to map database index (id = index)
 def increment():
@@ -24,7 +24,7 @@ def increment():
 def createIndex():
     payload_dict = json.load(open("mapping.json"))
     body = {'mappings': payload_dict}
-    print payload_dict
+
 
     try:
         client.indices.create(index='mappings', body=body)
@@ -49,7 +49,7 @@ def search(key, term):
         }
     })
     response = es.search(index='elements', body=query)
-    print formatprint(response)
+    print (formatprint(response))
 
 # BELOW ARE THE CURRENT QUERIES I AM TESTING
 # SETUP FOR TESTING
@@ -60,4 +60,4 @@ def getData():
     # to the terminal
     res = client.search(index='mappings', doc_type='post', body=body)
 
-    print formatprint(res)
+    print (formatprint(res))
