@@ -27,42 +27,46 @@ def listtojson(temp):
     index = 0
 
     for item in list_categories:
-        print item
         dict_items[item] = temp[index]
         index += 1
 
     json_string = json.dumps(dict_items, indent=2)
     appbackend.jsontodb(json_string)
 
-# trimlist(mylist)
+# formatlist(mylist)
 # strips unwanted string from the parsed data list
 # using a regular expression
 # example 'SRC=192.12.32.2' -> '192.12.32.2'
-def trimlist(mylist):
+# also converts port numbers (strings) -> integers
+def formatlist(mylist):
     index = 0
     while index < len(mylist):
         mylist[index] = re.sub(r'[A-Z]*=', "", mylist[index])
         mylist[index].rstrip
         index += 1
+    mylist[4] = int(mylist[4])
+    mylist[5] = int(mylist[5])
     return mylist
 
 # opens the log file specified in field
 # iterates line by line
 # during each iteration each line is parsed with a regex to extract wanted data (thrown into temp list)
-# list is then passed in as an argument to trimlist(temp) to trim off any unwated string..
+# list is then passed in as an argument to formatlist(temp) to trim off any unwated string & convert 
+# proper numbers to integers..
 # this returns a list data type containing formatted entries
-# trimlist(temp) is passed into listtojson(list data type), which communicates with the backend module..
+# formatlist(temp) is passed into listtojson(list data type), which communicates with the backend module..
 # to append to database
+appbackend.createIndex()
 with open("log.txt") as fn:
     for line in fn.readlines():
         temp = []
         temp.extend(re.findall(pattern, line))
-        listtojson(trimlist(temp))
+        listtojson(formatlist(temp))
         counter += 1
 
 # total lines parsed in file
 print "Total Count:" + str(counter)
-appbackend.defineMapping()
+# appbackend.defineMapping()
 # appbackend.search("destinationPort","23")
 # print appbackend.getData()
 # DDOS Give Aways

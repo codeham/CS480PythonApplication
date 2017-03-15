@@ -1,10 +1,12 @@
 {
-  "user": {
-      "properties": {
-          "destinationIP": {"type": "ip"},
-          "sourceIP": {"type": "ip"},
-          "sourcePort": {"type": "integer"},
-          "destinationPort": {"type": "string"},
-          "time": {"type": "string"},
-          "date": {"type": "string"}
-}}}
+        "post": {
+            "properties": {
+                "destinationIP": {"type": "ip"},
+                "sourceIP": {"type": "ip"},
+                "sourcePort": {"type": "integer"},
+                "destinationPort": {"type": "integer"},
+                "time": {"type": "string"},
+                "date": {"type": "string"}
+            }
+        }
+    }
