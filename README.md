@@ -10,10 +10,11 @@ How to run this program..
 
 2. run app.py in a terminal or IDE, make sure all proper files from the repo are inside the same directory
 
-![alt tag](CS480PythonApplication/README_images/terminal.png)
+![Alt text](/README_images/terminal.png?raw=true "Terminal")
 
 3. go to localhost:9200/mappings/post/# (# is any range between 0 - maximum number of entries inside the log file)
 
 4. the data should display properly organized in a JSON format (I would recommend installing a JSON viewer on your browser)
 
-![alt tag](CS480PythonApplication/README_images/api.png)
+![Alt text](/README_images/api.png?raw=true "API")
+
