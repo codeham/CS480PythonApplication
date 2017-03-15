@@ -1,0 +1,7 @@
+{
+    "aggs" : {
+        "ports" : {
+            "terms" : { "field" : "destinationPort", "order": {"_count": "desc"} }
+        }
+    }
+}

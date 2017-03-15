@@ -25,7 +25,7 @@ def createIndex():
     payload_dict = json.load(open("mapping.json"))
     body = {'mappings': payload_dict}
     print payload_dict
-    
+
     try:
         client.indices.create(index='mappings', body=body)
     except es.exceptions.TransportError as e:
@@ -55,6 +55,8 @@ def search(key, term):
 # SETUP FOR TESTING
 def getData():
     #get test, this is just getting back a document from the db
-    formatprint(es.get(index='elements', doc_type='logs', id=0))
-    formatprint(es.get(index='elements', doc_type='logs', id=400))
-    formatprint(es.get(index='elements', doc_type='logs', id=20))
+    # formatprint(es.get(index='mappings', doc_type='post', id=0))
+    body = json.load(open('es_query.json'))
+    res = client.search(index='mappings', doc_type='post', body=body)
+
+    print formatprint(res)
