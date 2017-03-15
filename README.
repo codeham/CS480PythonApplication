@@ -1,8 +1,10 @@
 How to run this program..
 
 1. install elasticsearch and make sure you have it running on your localhost
-	- http:localhost:9200 should be the default port where elasticsearch runs
+
 	-https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html
+
+	- http:localhost:9200 should be the default port where elasticsearch runs
 
 2. run app.py in a terminal or IDE, make sure all proper files from the repo are inside the same directory
 
