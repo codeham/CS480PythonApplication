@@ -51,7 +51,7 @@ def formatlist(mylist):
 # opens the log file specified in field
 # iterates line by line
 # during each iteration each line is parsed with a regex to extract wanted data (thrown into temp list)
-# list is then passed in as an argument to formatlist(temp) to trim off any unwated string & convert 
+# list is then passed in as an argument to formatlist(temp) to trim off any unwated string & convert
 # proper numbers to integers..
 # this returns a list data type containing formatted entries
 # formatlist(temp) is passed into listtojson(list data type), which communicates with the backend module..

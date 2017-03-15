@@ -1,12 +1,11 @@
 import requests
-from elasticsearch import Elasticsearch
+import elasticsearch as es
 import json
 
 # global index
 index = 0
 # establish connection object
-es = Elasticsearch([{'host': 'localhost', 'port': '9200'}])
-client = es
+client = es.Elasticsearch([{'host': 'localhost', 'port': '9200'}])
 
 r = requests.get('http://localhost:9200')
 
@@ -24,10 +23,12 @@ def increment():
 # loads schema settings from json file 'mapping.json'
 def createIndex():
     payload_dict = json.load(open("mapping.json"))
-
+    body = {'mappings': payload_dict}
+    print payload_dict
+    
     try:
-        client.indices.create(index='mappings', body=payload_dict)
-    except es.exception.TransportError as e:
+        client.indices.create(index='mappings', body=body)
+    except es.exceptions.TransportError as e:
         if e.error != 'index_already_exists_exception':
             raise
 
