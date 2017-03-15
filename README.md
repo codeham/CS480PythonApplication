@@ -9,6 +9,7 @@ How to run this program..
 ![Alt text](/README_images/localhost.png?raw=true "Localhost")
 
 2. run app.py in a terminal or IDE, make sure all proper files from the repo are inside the same directory
+	- make sure to install the proper elasticsearch python module 'pip install elastic search'
 
 ![Alt text](/README_images/terminal.png?raw=true "Terminal")
 
@@ -17,4 +18,3 @@ How to run this program..
 4. the data should display properly organized in a JSON format (I would recommend installing a JSON viewer on your browser)
 
 ![Alt text](/README_images/api.png?raw=true "API")
-
