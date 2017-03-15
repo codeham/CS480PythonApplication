@@ -51,12 +51,13 @@ def search(key, term):
     response = es.search(index='elements', body=query)
     print formatprint(response)
 
-# gets a document back from the data
+# BELOW ARE THE CURRENT QUERIES I AM TESTING
 # SETUP FOR TESTING
 def getData():
-    #get test, this is just getting back a document from the db
     # formatprint(es.get(index='mappings', doc_type='post', id=0))
     body = json.load(open('es_query.json'))
+    # this query below returns back the most used destination ports followed by printing the content..
+    # to the terminal
     res = client.search(index='mappings', doc_type='post', body=body)
 
     print formatprint(res)
