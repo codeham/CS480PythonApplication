@@ -10,7 +10,7 @@ How to run this program..
 
 2. run app.py in a terminal or IDE, make sure all proper files from the repo are inside the same directory
 
-	- make sure to install the proper elasticsearch python module *pip install elastic search*
+	- make sure to install the proper elasticsearch python module **pip install elastic search**
 
 ![Alt text](/README_images/terminal.png?raw=true "Terminal")
 
