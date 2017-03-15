@@ -4,7 +4,7 @@
 
 	-https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html
 
-	- http:localhost:9200 should be the default port where elasticsearch runs
+	- http://localhost:9200 should be the default port where elasticsearch runs
 
 ![Alt text](/README_images/localhost.png?raw=true "Localhost")
 
