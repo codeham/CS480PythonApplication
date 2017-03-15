@@ -6,7 +6,7 @@ How to run this program..
 
 	- http:localhost:9200 should be the default port where elasticsearch runs
 
-![alt tag](CS480PythonApplication/README_images/localhost.png)
+![Alt text](/README_images/localhost.png?raw=true "Localhost")
 
 2. run app.py in a terminal or IDE, make sure all proper files from the repo are inside the same directory
 
