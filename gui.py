@@ -9,6 +9,9 @@ class Application:
 		self.frame = Frame(master)
 		self.frame.pack()
 
+		# self.quitbutton = Button(text='Quit', command=self.frame.quit, fg="red")
+		# self.quitbutton.pack(side=TOP)
+
 		self.label = Label(self.frame, text="DOS Scanner", font=("Helvetica", 22),pady=20)
 		self.label.pack()
 
@@ -41,10 +44,20 @@ class Application:
 		if filename:
 			app.main(filename)
 			self.completescan()
+			self.windowresults()
 			return filename
+
+	def windowresults(self):
+		self.top = Toplevel(self.frame)
+		self.top.geometry("700x650")
+		self.top.title('Scanned Results')
+		self.msg = Message(self.top, text="This is a demo")
+
+		self.quitbutton = Button(self.top, text="Dismiss", command=self.top.destroy)
+		self.quitbutton.pack()
 
 root = Tk()
 root.geometry("750x525")
 application = Application(root)
 root.mainloop()
-root.destroy()
+# root.destroy()
