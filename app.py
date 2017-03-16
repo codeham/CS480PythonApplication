@@ -2,6 +2,8 @@ import re
 import json
 import appbackend
 
+counter = 0
+
 # tuple that holds items that will be mapped as keys in dictionary
 list_categories = ('date', 'time', 'sourceIP', 'destinationIP', 'sourcePort', 'destinationPort')
 
@@ -14,8 +16,6 @@ patterns = [r'^[A-Z][a-z]*\s\d*', r'[0-9][0-9]\b:\b[0-9][0-9]\b:\b[0-9][0-9]',
 
 # joining(concatenating) full pattern with OR operator for better efficieny
 pattern = "|".join(patterns)
-# global counter just to count entries (can be removed later)
-counter = 0
 
 # listtojson(temp)
 # takes in a list containing one data entry
@@ -48,6 +48,13 @@ def formatlist(mylist):
     mylist[5] = int(mylist[5])
     return mylist
 
+def increment():
+    global counter
+    counter += 1
+
+def totalcount():
+    print ('Total lines parsed: ' + str(counter))
+
 # opens the log file specified in field
 # iterates line by line
 # during each iteration each line is parsed with a regex to extract wanted data (thrown into temp list)
@@ -56,17 +63,17 @@ def formatlist(mylist):
 # this returns a list data type containing formatted entries
 # formatlist(temp) is passed into listtojson(list data type), which communicates with the backend module..
 # to append to database
-appbackend.createIndex()
-with open("log.txt") as fn:
-    for line in fn.readlines():
-        temp = []
-        temp.extend(re.findall(pattern, line))
-        listtojson(formatlist(temp))
-        counter += 1
+def main(filename):
+    appbackend.createIndex()
+    with open(filename) as fn:
+        for line in fn.readlines():
+            temp = []
+            temp.extend(re.findall(pattern, line))
+            listtojson(formatlist(temp))
+            increment()
+        totalcount()
 
-# total lines parsed in file
-print ("Total Count:" + str(counter))
-appbackend.getData()
+# appbackend.getData()
 # appbackend.defineMapping()
 # appbackend.search("destinationPort","23")
 # print appbackend.getData()

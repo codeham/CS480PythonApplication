@@ -1,7 +1,8 @@
 from Tkinter import *
 from tkFileDialog import *
+import app
 
-class App:
+class Application:
 	def __init__(self, master):
 		master.title("CS 480 Application")
 
@@ -11,7 +12,7 @@ class App:
 		self.label = Label(frame, text="DDOS Detector", font=("Helvetica", 22),pady=20)
 		self.label.pack()
 
-		self.uploadButton = Button(master, text="upload", command=self.loadFile)
+		self.uploadButton = Button(master, text="upload", command=self.getfilepath)
 		self.uploadButton.pack()
 
 
@@ -19,21 +20,18 @@ class App:
 		print "hi there, everyone !"
 	def uploadcall(self):
 		print "this is the upload call !"
-	def loadFile(self):
+	def getfilepath(self):
 		self.options = {}
 		self.options['filetypes'] = [('all files', '.*')]
 		self.options['initialdir'] = [('/home/cristian/Documents/Development/CS480_Project/Python_Project/')]
-
 		filename = askopenfilename(**self.options)
 
 		if filename:
-			print filename
-			return open(filename, 'w')
-
+			app.main(filename)
+			return filename
 
 root = Tk()
 root.geometry("750x525")
-app = App(root)
-
+application = Application(root)
 root.mainloop()
 root.destroy()
