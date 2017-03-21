@@ -1,6 +1,7 @@
 from Tkinter import *
 from tkFileDialog import *
 import app
+import testgui
 
 class Application:
 	def __init__(self, master):
@@ -44,14 +45,17 @@ class Application:
 		if filename:
 			app.main(filename)
 			self.completescan()
-			self.windowresults()
+			# self.windowresults()
+			testgui.run()
 			return filename
 
 	def windowresults(self):
 		self.top = Toplevel(self.frame)
-		self.top.geometry("700x650")
+		self.top.geometry("900x650")
 		self.top.title('Scanned Results')
-		self.msg = Message(self.top, text="This is a demo")
+
+		self.listbox = Listbox(self.frame, selectmode=SINGLE)
+		self.listbox.config(width=30)
 
 		self.quitbutton = Button(self.top, text="Dismiss", command=self.top.destroy)
 		self.quitbutton.pack()

@@ -6,7 +6,7 @@
                 "sourcePort": {"type": "integer"},
                 "destinationPort": {"type": "integer"},
                 "time": {"type": "string"},
-                "date": {"type": "string"}
+                "date": {"type": "date", "format": "basic_date"}
             }
         }
     }

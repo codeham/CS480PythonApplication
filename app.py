@@ -1,6 +1,7 @@
 import re
 import json
 import appbackend
+from time import strptime
 
 counter = 0
 
@@ -33,6 +34,12 @@ def listtojson(temp):
     json_string = json.dumps(dict_items, indent=2)
     appbackend.jsontodb(json_string)
 
+def formatdate(date):
+    split_string = date.split(' ')
+    newmonth = strptime(split_string[0],'%b').tm_mon
+    format_date = ("2017" + str(newmonth).zfill(2) + split_string[1])
+    return format_date
+
 # formatlist(mylist)
 # strips unwanted string from the parsed data list
 # using a regular expression
@@ -44,6 +51,7 @@ def formatlist(mylist):
         mylist[index] = re.sub(r'[A-Z]*=', "", mylist[index])
         mylist[index].rstrip
         index += 1
+    mylist[0] = formatdate(mylist[0])
     mylist[4] = int(mylist[4])
     mylist[5] = int(mylist[5])
     return mylist
@@ -73,9 +81,6 @@ def main(filename):
             increment()
         totalcount()
 
-# appbackend.getData()
-# appbackend.defineMapping()
-# appbackend.search("destinationPort","23")
-# print appbackend.getData()
-# DDOS Give Aways
-# same IP -> Multiple Ports
+# run the program
+main('log.txt')
+
